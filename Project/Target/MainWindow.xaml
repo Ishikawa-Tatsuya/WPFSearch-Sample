@@ -1,0 +1,27 @@
+﻿<Window x:Class="Target.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.Resources>
+            <DataTemplate x:Key="personViewTemplate">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Name}"/>
+                    <TextBlock Text="さん　" />
+                    <TextBlock Text="{Binding Age}"/>
+                    <TextBlock Text="歳" />
+                </StackPanel>
+            </DataTemplate>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <TextBox Text="{Binding Memo}" Grid.Row="0"/>
+        <TextBlock Text="{Binding Memo}" Grid.Row="1"/>
+        <Button Content="OK" Command="{Binding CommandOK}" Grid.Row="2"/>
+        <ListBox ItemsSource="{Binding Persons}" ItemTemplate="{StaticResource personViewTemplate}" Grid.Row="3"/>
+    </Grid>
+</Window>
